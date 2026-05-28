@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="ShikoSkillsService.API/ShikoSkillsService.API.csproj" />
+  <Project Path="ShikoSkillsService.Application/ShikoSkillsService.Application.csproj" />
+  <Project Path="ShikoSkillsService.Domain/ShikoSkillsService.Domain.csproj" />
+  <Project Path="ShikoSkillsService.Infrastructure/ShikoSkillsService.Infrastructure.csproj" />
+</Solution>

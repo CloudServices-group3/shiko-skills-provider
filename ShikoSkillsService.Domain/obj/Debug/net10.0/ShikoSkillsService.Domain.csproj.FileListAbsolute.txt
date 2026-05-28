@@ -1,0 +1,11 @@
+C:\Users\danaa\source\repos\ShikoSkillsService\ShikoSkillsService.Domain\bin\Debug\net10.0\ShikoSkillsService.Domain.deps.json
+C:\Users\danaa\source\repos\ShikoSkillsService\ShikoSkillsService.Domain\bin\Debug\net10.0\ShikoSkillsService.Domain.dll
+C:\Users\danaa\source\repos\ShikoSkillsService\ShikoSkillsService.Domain\bin\Debug\net10.0\ShikoSkillsService.Domain.pdb
+C:\Users\danaa\source\repos\ShikoSkillsService\ShikoSkillsService.Domain\obj\Debug\net10.0\ShikoSkillsService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\danaa\source\repos\ShikoSkillsService\ShikoSkillsService.Domain\obj\Debug\net10.0\ShikoSkillsService.Domain.AssemblyInfoInputs.cache
+C:\Users\danaa\source\repos\ShikoSkillsService\ShikoSkillsService.Domain\obj\Debug\net10.0\ShikoSkillsService.Domain.AssemblyInfo.cs
+C:\Users\danaa\source\repos\ShikoSkillsService\ShikoSkillsService.Domain\obj\Debug\net10.0\ShikoSkillsService.Domain.csproj.CoreCompileInputs.cache
+C:\Users\danaa\source\repos\ShikoSkillsService\ShikoSkillsService.Domain\obj\Debug\net10.0\ShikoSkillsService.Domain.dll
+C:\Users\danaa\source\repos\ShikoSkillsService\ShikoSkillsService.Domain\obj\Debug\net10.0\refint\ShikoSkillsService.Domain.dll
+C:\Users\danaa\source\repos\ShikoSkillsService\ShikoSkillsService.Domain\obj\Debug\net10.0\ShikoSkillsService.Domain.pdb
+C:\Users\danaa\source\repos\ShikoSkillsService\ShikoSkillsService.Domain\obj\Debug\net10.0\ref\ShikoSkillsService.Domain.dll
