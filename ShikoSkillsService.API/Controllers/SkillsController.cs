@@ -17,6 +17,13 @@ public class SkillsController : ControllerBase
         _skillService = skillService;
     }
 
+    [HttpOptions]
+    [AllowAnonymous]
+    public IActionResult Options()
+    {
+        return Ok();
+    }
+
     [HttpGet]
     public async Task<IActionResult> GetSkills()
     {

@@ -22,4 +22,8 @@
     <ProjectReference Include="..\ShikoSkillsService.Infrastructure\ShikoSkillsService.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="NewFolder\" />
+  </ItemGroup>
+
 </Project>
