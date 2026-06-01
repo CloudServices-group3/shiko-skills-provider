@@ -40,7 +40,7 @@ public class SkillsController : ControllerBase
             return Unauthorized();
 
         var skill = await _skillService.AddSkillAsync(userId, name);
-        return CreatedAtAction(nameof(GetSkills), new { userId = skill.Id }, skill);
+        return CreatedAtAction(nameof(GetSkills), new { userId = userId }, skill);
     }
 
     [HttpDelete("{userId}/{id}")]
