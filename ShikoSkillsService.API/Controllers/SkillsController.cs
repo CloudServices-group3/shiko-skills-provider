@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShikoSkillsService.Application.Services;
-using System.Security.Claims;
 
 namespace ShikoSkillsService.API.Controllers;
 
@@ -24,33 +23,33 @@ public class SkillsController : ControllerBase
         return Ok();
     }
 
-    [HttpGet]
-    public async Task<IActionResult> GetSkills()
+    [HttpGet("{userId}")]
+    public async Task<IActionResult> GetSkills(Guid userId)
     {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (userId == null) return Unauthorized();
+        if (userId == Guid.Empty)
+            return Unauthorized();
 
         var skills = await _skillService.GetUserSkillsAsync(userId);
         return Ok(skills);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> AddSkill([FromBody] string name)
+    [HttpPost("{userId}")]
+    public async Task<IActionResult> AddSkill(Guid userId, [FromBody] string name)
     {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (userId == null) return Unauthorized();
+        if (userId == Guid.Empty)
+            return Unauthorized();
 
         var skill = await _skillService.AddSkillAsync(userId, name);
-        return CreatedAtAction(nameof(GetSkills), new { id = skill.Id }, skill);
+        return CreatedAtAction(nameof(GetSkills), new { userId = skill.Id }, skill);
     }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteSkill(int id)
+    [HttpDelete("{userId}/{id}")]
+    public async Task<IActionResult> DeleteSkill(Guid userId, int id)
     {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        if (userId == null) return Unauthorized();
+        if (userId == Guid.Empty)
+            return Unauthorized();
 
-        await _skillService.DeleteSkillAsync(id, userId);
+        await _skillService.DeleteSkillAsync(userId, id);
         return NoContent();
     }
 }

@@ -4,7 +4,7 @@ namespace ShikoSkillsService.Application.Interfaces;
 
 public interface ISkillRepository
 {
-    Task<IEnumerable<Skill>> GetByUserIdAsync(string userId);
+    Task<IEnumerable<Skill>> GetByUserIdAsync(Guid userId);
     Task<Skill> AddAsync(Skill skill);
-    Task DeleteAsync(int id, string userId);
+    Task DeleteAsync(Guid userId, int id);
 }

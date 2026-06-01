@@ -14,7 +14,7 @@ public class SkillRepository : ISkillRepository
         _context = context;
     }
 
-    public async Task<IEnumerable<Skill>> GetByUserIdAsync(string userId)
+    public async Task<IEnumerable<Skill>> GetByUserIdAsync(Guid userId)
     {
         return await _context.Skills
             .Where(s => s.UserId == userId)
@@ -28,7 +28,7 @@ public class SkillRepository : ISkillRepository
         return skill;
     }
 
-    public async Task DeleteAsync(int id, string userId)
+    public async Task DeleteAsync(Guid userId, int id)
     {
         var skill = await _context.Skills
             .FirstOrDefaultAsync(s => s.Id == id && s.UserId == userId);

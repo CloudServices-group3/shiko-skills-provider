@@ -24,7 +24,14 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddDbContext<SkillsDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlOptions => sqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 5,
+            maxRetryDelay: TimeSpan.FromSeconds(10),
+            errorNumbersToAdd: null
+        )
+    ));
 
 builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 builder.Services.AddScoped<SkillService>();
@@ -52,16 +59,24 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<SkillsDbContext>();
-    await db.Database.MigrateAsync();
+    try
+    {
+        await db.Database.MigrateAsync();
+    }
+    catch (Exception ex)
+    {
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "Databasmigration misslyckades vid startup.");
+    }
 }
 
 app.UseCors();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapOpenApi();
 app.MapScalarApiReference();
-
-app.UseAuthentication();
-app.UseAuthorization();
+app.MapGet("/", () => Results.Redirect("/scalar/v1"));
 
 app.MapControllers();
 

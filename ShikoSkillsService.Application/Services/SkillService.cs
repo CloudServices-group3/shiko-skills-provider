@@ -12,12 +12,12 @@ public class SkillService
         _skillRepository = skillRepository;
     }
 
-    public async Task<IEnumerable<Skill>> GetUserSkillsAsync(string userId)
+    public async Task<IEnumerable<Skill>> GetUserSkillsAsync(Guid userId)
     {
         return await _skillRepository.GetByUserIdAsync(userId);
     }
 
-    public async Task<Skill> AddSkillAsync(string userId, string name)
+    public async Task<Skill> AddSkillAsync(Guid userId, string name)
     {
         var skill = new Skill
         {
@@ -27,8 +27,8 @@ public class SkillService
         return await _skillRepository.AddAsync(skill);
     }
 
-    public async Task DeleteSkillAsync(int id, string userId)
+    public async Task DeleteSkillAsync(Guid userId, int id)
     {
-        await _skillRepository.DeleteAsync(id, userId);
+        await _skillRepository.DeleteAsync(userId, id);
     }
 }
