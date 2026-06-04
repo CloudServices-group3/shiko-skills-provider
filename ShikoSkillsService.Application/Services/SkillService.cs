@@ -24,7 +24,13 @@ public class SkillService
             UserId = userId,
             Name = name
         };
+
         return await _skillRepository.AddAsync(skill);
+    }
+
+    public async Task<Skill?> UpdateSkillAsync(Guid userId, int id, string name)
+    {
+        return await _skillRepository.UpdateAsync(userId, id, name);
     }
 
     public async Task DeleteSkillAsync(Guid userId, int id)

@@ -28,6 +28,20 @@ public class SkillRepository : ISkillRepository
         return skill;
     }
 
+    public async Task<Skill?> UpdateAsync(Guid userId, int id, string name)
+    {
+        var skill = await _context.Skills
+            .FirstOrDefaultAsync(s => s.Id == id && s.UserId == userId);
+
+        if (skill == null)
+            return null;
+
+        skill.Name = name;
+
+        await _context.SaveChangesAsync();
+        return skill;
+    }
+
     public async Task DeleteAsync(Guid userId, int id)
     {
         var skill = await _context.Skills

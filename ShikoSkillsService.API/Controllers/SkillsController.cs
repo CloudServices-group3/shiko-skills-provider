@@ -34,6 +34,23 @@ public class SkillsController : ControllerBase
         return CreatedAtAction(nameof(GetSkills), new { userId }, skill);
     }
 
+    [HttpPut("{userId}/{id}")]
+    public async Task<IActionResult> UpdateSkill(Guid userId, int id, [FromBody] string name)
+    {
+        if (userId == Guid.Empty)
+            return BadRequest("UserId saknas.");
+
+        if (string.IsNullOrWhiteSpace(name))
+            return BadRequest("Skill-namn saknas.");
+
+        var updatedSkill = await _skillService.UpdateSkillAsync(userId, id, name);
+
+        if (updatedSkill == null)
+            return NotFound("Skill hittades inte.");
+
+        return Ok(updatedSkill);
+    }
+
     [HttpDelete("{userId}/{id}")]
     public async Task<IActionResult> DeleteSkill(Guid userId, int id)
     {
